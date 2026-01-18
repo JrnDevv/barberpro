@@ -1,0 +1,57 @@
+import { clearSession, getUser } from "./storage.js";
+
+function setActiveNav(currentPage) {
+  document.querySelectorAll("[data-nav]").forEach((a) => {
+    if (a.getAttribute("data-nav") === currentPage) a.classList.add("active");
+  });
+}
+
+export function renderLayout({ role, currentPage }) {
+  const user = getUser();
+
+  // Navbar
+  const nameEl = document.querySelector("[data-user-name]");
+  const emailEl = document.querySelector("[data-user-email]");
+  const roleEl = document.querySelector("[data-user-role]");
+
+  if (nameEl) nameEl.textContent = user?.name || "Usuário";
+  if (emailEl) emailEl.textContent = user?.email || "";
+  if (roleEl) roleEl.textContent = role === "ADMIN" ? "Admin" : "Cliente";
+
+  // Sidebar items
+  const nav = document.querySelector("[data-sidebar]");
+  if (nav) {
+    nav.innerHTML = "";
+
+    const links =
+      role === "ADMIN"
+        ? [
+            { href: "./admin-dashboard.html", label: "Dashboard", key: "admin-dashboard" },
+            { href: "./admin-agenda.html", label: "Agenda", key: "admin-agenda" },
+            { href: "./admin-services.html", label: "Serviços", key: "admin-services" },
+          ]
+        : [
+            { href: "./client-dashboard.html", label: "Dashboard", key: "client-dashboard" },
+            { href: "./client-agenda.html", label: "Agendar", key: "client-agenda" },
+          ];
+
+    links.forEach((l) => {
+      const a = document.createElement("a");
+      a.href = l.href;
+      a.textContent = l.label;
+      a.setAttribute("data-nav", l.key);
+      nav.appendChild(a);
+    });
+  }
+
+  setActiveNav(currentPage);
+
+  // Logout
+  const logoutBtn = document.querySelector("[data-logout]");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      clearSession();
+      window.location.href = "./login.html";
+    });
+  }
+}

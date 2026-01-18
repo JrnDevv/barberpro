@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>BarberPro | Agendar</title>
+  <link rel="stylesheet" href="../css/globals.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner container">
+        <div class="brand">
+          <div class="logo">BP</div>
+          <div>
+            <div class="name">BarberPro</div>
+            <div class="sub">Área <span data-user-role>Cliente</span></div>
+          </div>
+        </div>
+
+        <div class="userbox">
+          <div class="meta">
+            <div class="u1" data-user-name>Usuário</div>
+            <div class="u2" data-user-email></div>
+          </div>
+          <button class="btn" data-logout>Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <nav class="nav" data-sidebar></nav>
+    </aside>
+
+    <main class="content">
+      <div class="container">
+        <h1 class="page-title">Agendar horário</h1>
+        <p class="page-sub">Próximo passo: selecionar serviço, data e horário.</p>
+        <section class="card panel">
+          <p class="helper">Na próxima mensagem eu te mando a agenda completa com slots e modal de confirmação.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { requireAuth } from "../js/guard.js";
+    import { renderLayout } from "../js/layout.js";
+
+    const user = requireAuth(["CLIENT"]);
+    if (user) renderLayout({ role: "CLIENT", currentPage: "client-agenda" });
+  </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>BarberPro | Criar conta</title>
+  <link rel="stylesheet" href="../css/globals.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+</head>
+<body>
+  <main class="auth-wrap">
+    <div class="auth-shell">
+      <section class="auth-left card">
+        <div class="auth-brand">
+          <div class="logo">BP</div>
+          <div>
+            <div style="font-weight:900;">BarberPro</div>
+            <div style="color:var(--muted);font-size:13px;">Cadastro</div>
+          </div>
+        </div>
+
+        <h1 class="auth-title">Crie sua conta em segundos.</h1>
+        <p class="auth-sub">
+          Você pode se cadastrar como cliente. O modo admin pode ser liberado depois pelo back-end (mais seguro).
+        </p>
+
+        <div class="auth-highlights">
+          <span class="badge">🔒 Segurança via JWT</span>
+          <span class="badge">🗓️ Agendamento por slots</span>
+          <span class="badge">📈 Base para relatórios</span>
+        </div>
+      </section>
+
+      <section class="auth-right card">
+        <h2 class="form-title">Criar conta</h2>
+        <p class="form-sub">Preencha os dados abaixo.</p>
+
+        <div class="role-toggle" style="margin-top:16px;">
+          <input id="role-client" type="radio" name="role" value="CLIENT" checked>
+          <label for="role-client">
+            <div class="role-title">Cliente</div>
+            <div class="role-desc">Agendar e acompanhar horários</div>
+          </label>
+
+          <input id="role-admin" type="radio" name="role" value="ADMIN">
+          <label for="role-admin">
+            <div class="role-title">Admin</div>
+            <div class="role-desc">Gerenciar (use só para teste)</div>
+          </label>
+        </div>
+
+        <form class="form" data-register-form>
+          <div class="row">
+            <div>
+              <label class="label" for="name">Nome</label>
+              <input class="input" id="name" name="name" type="text" placeholder="Seu nome" required>
+            </div>
+            <div>
+              <label class="label" for="phone">Telefone</label>
+              <input class="input" id="phone" name="phone" type="tel" placeholder="(11) 99999-9999">
+            </div>
+          </div>
+
+          <div>
+            <label class="label" for="email">E-mail</label>
+            <input class="input" id="email" name="email" type="email" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <div>
+            <label class="label" for="password">Senha</label>
+            <input class="input" id="password" name="password" type="password" placeholder="Crie uma senha" required>
+          </div>
+
+          <button class="btn primary block" type="submit">Criar conta</button>
+          <div class="toast" data-toast></div>
+        </form>
+
+        <p class="footer-links">
+          Já tem conta? <a href="./login.html">Entrar</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module">
+    import { bindRegister } from "../js/auth.js";
+    bindRegister();
+  </script>
+</body>
+</html>

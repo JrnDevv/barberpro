@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>BarberPro | Entrar</title>
+  <link rel="stylesheet" href="../css/globals.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+</head>
+<body>
+  <main class="auth-wrap">
+    <div class="auth-shell">
+      <section class="auth-left card">
+        <div class="auth-brand">
+          <div class="logo">BP</div>
+          <div>
+            <div style="font-weight:900;">BarberPro</div>
+            <div style="color:var(--muted);font-size:13px;">Agendamento & Gestão</div>
+          </div>
+        </div>
+
+        <h1 class="auth-title">Organize sua barbearia com clareza.</h1>
+        <p class="auth-sub">
+          Login rápido para clientes e administradores. Sistema pensado para ser simples no celular e forte no desktop.
+        </p>
+
+        <div class="auth-highlights">
+          <span class="badge">✅ Agenda inteligente</span>
+          <span class="badge">✅ Serviços & preços</span>
+          <span class="badge">✅ Controle por status</span>
+          <span class="badge">✅ Base para API Node</span>
+        </div>
+
+        <hr class="hr" />
+
+        <p class="helper">
+          Dica: use o modo <b>Cliente</b> para agendar e o modo <b>Admin</b> para gerenciar.
+        </p>
+      </section>
+
+      <section class="auth-right card">
+        <h2 class="form-title">Entrar</h2>
+        <p class="form-sub">Acesse com seu e-mail e senha.</p>
+
+        <div class="role-toggle" style="margin-top:16px;">
+          <input id="role-client" type="radio" name="role" value="CLIENT" checked>
+          <label for="role-client">
+            <div class="role-title">Cliente</div>
+            <div class="role-desc">Agendar e acompanhar horários</div>
+          </label>
+
+          <input id="role-admin" type="radio" name="role" value="ADMIN">
+          <label for="role-admin">
+            <div class="role-title">Admin</div>
+            <div class="role-desc">Gerenciar serviços e agenda</div>
+          </label>
+        </div>
+
+        <form class="form" data-login-form>
+          <div>
+            <label class="label" for="email">E-mail</label>
+            <input class="input" id="email" name="email" type="email" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <div>
+            <label class="label" for="password">Senha</label>
+            <input class="input" id="password" name="password" type="password" placeholder="••••••••" required>
+          </div>
+
+          <button class="btn primary block" type="submit">Entrar</button>
+          <div class="toast" data-toast></div>
+        </form>
+
+        <p class="footer-links">
+          Não tem conta? <a href="./register.html">Criar conta</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module">
+    import { bindLogin } from "../js/auth.js";
+    bindLogin();
+  </script>
+</body>
+</html>

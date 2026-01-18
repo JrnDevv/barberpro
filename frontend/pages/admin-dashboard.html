@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>BarberPro | Admin</title>
+  <link rel="stylesheet" href="../css/globals.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-inner container">
+        <div class="topbar-left">
+          <div class="brand">
+            <div class="logo">BP</div>
+            <div>
+              <div class="name">BarberPro</div>
+              <div class="sub">Área <span data-user-role>Admin</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="userbox">
+          <div class="meta">
+            <div class="u1" data-user-name>Usuário</div>
+            <div class="u2" data-user-email></div>
+          </div>
+          <button class="btn" data-logout>Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <nav class="nav" data-sidebar></nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="container">
+        <h1 class="page-title">Dashboard (Admin)</h1>
+        <p class="page-sub">
+          Aqui você controla serviços, agenda do dia e status dos agendamentos.
+        </p>
+
+        <div class="cards">
+          <div class="card card-stat">
+            <div class="k">Agendamentos hoje</div>
+            <div class="v">—</div>
+            <div class="h">Vamos ligar isso na API depois.</div>
+          </div>
+          <div class="card card-stat">
+            <div class="k">Pendentes</div>
+            <div class="v">—</div>
+            <div class="h">Confirmar / cancelar.</div>
+          </div>
+          <div class="card card-stat">
+            <div class="k">Serviços ativos</div>
+            <div class="v">—</div>
+            <div class="h">CRUD na tela Serviços.</div>
+          </div>
+        </div>
+
+        <section class="card panel">
+          <h2 style="margin:0;">Atalhos</h2>
+          <p class="helper">Agora vamos criar a Agenda do Admin e o CRUD de Serviços.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+            <a class="btn primary" href="./admin-agenda.html">Ver agenda</a>
+            <a class="btn" href="./admin-services.html">Gerenciar serviços</a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { requireAuth } from "../js/guard.js"
+    import { renderLayout } from "../js/layout.js";
+
+    const user = requireAuth(["ADMIN"]);
+    if (user) {
+      renderLayout({ role: "ADMIN", currentPage: "admin-dashboard" });
+    }
+  </script>
+</body>
+</html>

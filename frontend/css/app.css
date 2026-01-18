@@ -1,0 +1,166 @@
+/* =========================
+   APP LAYOUT (Navbar + Sidebar)
+========================= */
+
+.app{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 72px 1fr;
+}
+
+.topbar{
+  grid-column: 1 / -1;
+  grid-row: 1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(148,163,184,.18);
+  background: rgba(7,10,15,.70);
+  backdrop-filter: blur(12px);
+}
+
+.topbar-inner{
+  height: 72px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 18px;
+}
+
+.topbar-left{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.brand .logo{
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(212,175,55,.12);
+  border: 1px solid rgba(212,175,55,.35);
+  font-weight: 900;
+}
+.brand .name{ font-weight: 900; }
+.brand .sub{ color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+.userbox{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.userbox .meta{
+  text-align: right;
+  line-height: 1.2;
+}
+.userbox .meta .u1{ font-weight: 800; font-size: 13px; }
+.userbox .meta .u2{ color: var(--muted); font-size: 12px; }
+
+.sidebar{
+  grid-column: 1;
+  grid-row: 2;
+  border-right: 1px solid rgba(148,163,184,.18);
+  padding: 16px;
+}
+
+.nav{
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav a{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(148,163,184,.16);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.88);
+  font-weight: 700;
+  transition: background .12s ease, border-color .12s ease, transform .12s ease;
+}
+.nav a:hover{
+  transform: translateY(-1px);
+  border-color: rgba(212,175,55,.35);
+  background: rgba(255,255,255,.07);
+}
+.nav a.active{
+  border-color: rgba(212,175,55,.45);
+  background: rgba(212,175,55,.10);
+}
+
+.content{
+  grid-column: 2;
+  grid-row: 2;
+  padding: 18px;
+}
+
+.page-title{
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.page-sub{
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.panel{
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.cards{
+  margin-top: 16px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 1050px){
+  .cards{ grid-template-columns: 1fr; }
+}
+.card-stat{
+  padding: 14px;
+}
+.card-stat .k{ color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.card-stat .v{ margin-top: 8px; font-size: 22px; font-weight: 900; }
+.card-stat .h{ margin-top: 6px; color: rgba(226,232,240,.78); font-size: 13px; }
+
+/* Mobile: sidebar vira topo simples */
+@media (max-width: 900px){
+  .app{
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px auto 1fr;
+  }
+  .sidebar{
+    grid-column: 1;
+    grid-row: 2;
+    border-right: none;
+    border-bottom: 1px solid rgba(148,163,184,.18);
+  }
+  .content{
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .nav{
+    flex-direction: row;
+    overflow:auto;
+  }
+  .nav a{
+    white-space: nowrap;
+  }
+}
